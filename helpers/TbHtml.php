@@ -3335,7 +3335,8 @@ EOD;
     public static function dropdownToggleMenuLink($label, $url = '#', $htmlOptions = array(), $depth = 0)
     {
         self::addCssClass('dropdown-toggle', $htmlOptions);
-        if ($depth === 0) {
+	$caret = isset($htmlOptions['caret']) ? $htmlOptions['caret'] : true;
+        if ($depth === 0 && $caret === true) {
             $label .= ' <b class="caret"></b>';
         }
         $htmlOptions['data-toggle'] = 'dropdown';
