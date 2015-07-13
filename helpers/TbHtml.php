@@ -3798,6 +3798,7 @@ EOD;
                 continue;
             }
             $menuItem = array();
+            $menuItem['url'] = TbArray::popValue('url', $tabOptions);
             $menuItem['icon'] = TbArray::popValue('icon', $tabOptions);
             $menuItem['label'] = TbArray::popValue('label', $tabOptions, '');
             $menuItem['active'] = TbArray::getValue('active', $tabOptions, false);
@@ -3812,7 +3813,10 @@ EOD;
                 $paneOptions = TbArray::popValue('paneOptions', $tabOptions, array());
                 $id = $paneOptions['id'] = TbArray::popValue('id', $tabOptions, 'tab_' . ++$i);
                 $menuItem['linkOptions']['data-toggle'] = 'tab';
-                $menuItem['url'] = '#' . $id;
+                if (is_null($menuItem['url']))
+                    $menuItem['url'] = '#' . $id;
+                else
+                    $menuItem['linkOptions']['data-target'] = '#' . $id;
                 self::addCssClass('tab-pane', $paneOptions);
                 if (TbArray::popValue('fade', $tabOptions, true)) {
                     self::addCssClass('fade', $paneOptions);
