@@ -3163,7 +3163,7 @@ EOD;
     public static function menuDivider($htmlOptions = array())
     {
         self::addCssClass('divider', $htmlOptions);
-        return self::tag('li', $htmlOptions);
+        return self::tag('li', $htmlOptions,'');
     }
 
     /**
@@ -3323,7 +3323,7 @@ EOD;
     public static function navbarMenuDivider($htmlOptions = array())
     {
         self::addCssClass('divider-vertical', $htmlOptions);
-        return self::tag('li', $htmlOptions);
+        return self::tag('li', $htmlOptions,'');
     }
 
     /**
